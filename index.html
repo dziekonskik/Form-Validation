@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Walidajca Formularza</title>
+  </head>
+  <body class="flex-center">
+    <section class="form-section flex-center">
+      <div class="form__decoration flex-center">
+        <h3 class="form__decoration--h3">Trust.</h3>
+        <img
+          class="form__decoration--img"
+          src="./img/iconfinder-internet-mail.svg"
+          alt="envelope vector graphic"
+        />
+      </div>
+      <form
+        class="form flex-center"
+        action="https://dev.cotenfrontend.pl"
+        method="POST"
+      >
+        <fieldset class="form__fieldset">
+          <legend>User Credentials</legend>
+          <label class="form__label" for="name">Name</label>
+          <input
+            class="form__input"
+            type="text"
+            id="name"
+            placeholder="Enter Your Name"
+            name="name"
+          />
+          <p class="error">Ooops!</p>
+          <label class="form__label" for="email">Email</label>
+          <input
+            class="form__input"
+            type="email"
+            id="email"
+            placeholder="Enter Your Email"
+            name="email"
+          />
+          <p class="error">Ooops!</p>
+          <label class="form__label" for="confirm">Confirm Email</label>
+          <input
+            class="form__input"
+            type="email"
+            id="confirm"
+            placeholder="Confirm Your Email"
+            name="confirm"
+          />
+          <p class="error">Ooops!</p>
+          <label class="form__label" for="check" name>GDRP</label>
+          <input type="checkbox" id="check" value="agree" />
+          <p class="error">Ooops!</p>
+          <input type="submit" id="button" class="form__submit" />
+        </fieldset>
+      </form>
+    </section>
+    <script src="./form.js"></script>
+  </body>
+</html>
