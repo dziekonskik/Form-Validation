@@ -35,33 +35,42 @@
             placeholder="Enter Your Name"
             name="name"
           />
-          <p class="error">Ooops!</p>
+          <p class="form__error"></p>
           <label class="form__label" for="email">Email</label>
           <input
             class="form__input"
             type="email"
             id="email"
-            placeholder="Enter Your Email"
+            placeholder="Enter Email"
             name="email"
           />
-          <p class="error">Ooops!</p>
-          <label class="form__label" for="confirm">Confirm Email</label>
+          <p class="form__error"></p>
+          <label class="form__label" for="password">Password</label>
           <input
             class="form__input"
-            type="email"
-            id="confirm"
-            placeholder="Confirm Your Email"
+            type="password"
+            id="password"
+            placeholder="Enter Password"
             name="confirm"
           />
-          <p class="error">Ooops!</p>
+          <p class="form__error"></p>
+          <label class="form__label" for="confirm">Confirm Password</label>
+          <input
+            class="form__input"
+            type="password"
+            id="confirm"
+            placeholder="Confirm Password"
+            name="confirm"
+          />
+          <p class="form__error"></p>
           <label class="form__label" for="check" name>GDRP</label>
           <input
             class="form__input--checkbox"
             type="checkbox"
             id="check"
-            value="agree"
+            value=""
           />
-          <p class="error">Ooops!</p>
+          <p class="form__error"></p>
           <button type="submit" id="button" class="form__submit">Send</button>
         </fieldset>
       </form>
