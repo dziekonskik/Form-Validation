@@ -21,7 +21,7 @@ function validateName(name) {
     addErrorClass('Name must be at least 3 characters', 0);
   }
   if (/\d|\W/.test(name)) {
-    addErrorClass('Name must contain letters only', 0);
+    addErrorClass('Name must contain english letters only', 0);
   } else {
     removeErrorClass(errorParagraphs);
   }
@@ -29,7 +29,7 @@ function validateName(name) {
 
 function validateEmail(email) {
   if (!email.toString().includes('@')) {
-    addErrorClass('Make sure your email has @ character', 1);
+    addErrorClass('Make sure your email has "@" character', 1);
   }
   if (!/\.\w{2,3}$/.test(email)) {
     addErrorClass('Make sure your email has domain', 1);
@@ -77,7 +77,7 @@ function submitFormData(e) {
   ) {
     return true;
   } else {
-    return false;
+    e.preventDefault();
   }
 }
 
