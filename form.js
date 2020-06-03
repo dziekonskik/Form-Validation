@@ -17,10 +17,13 @@ function removeErrorClass(pararaphList) {
 }
 
 function validateName(name) {
-  if (name.length < 3) {
-    addErrorClass('Name must be at least 3 characters', 0);
+  const hasNameShorterThanTwo = name.length < 2;
+  const doesNotHaveDigitsAndSpecials = /\d|\W/.test(name);
+
+  if (hasNameShorterThanTwo) {
+    addErrorClass('Name must be at least 2 characters', 0);
   }
-  if (/\d|\W/.test(name)) {
+  if (doesNotHaveDigitsAndSpecials) {
     addErrorClass('Name must contain english letters only', 0);
   } else {
     removeErrorClass(errorParagraphs);
@@ -28,25 +31,33 @@ function validateName(name) {
 }
 
 function validateEmail(email) {
-  if (!email.toString().includes('@')) {
+  const doensNotHaveAt = !email.toString().includes('@');
+  const doesNotHaveDomain = !/\.\w{2,3}$/.test(email);
+
+  if (doensNotHaveAt) {
     addErrorClass('Make sure your email has "@" character', 1);
   }
-  if (!/\.\w{2,3}$/.test(email)) {
+  if (doesNotHaveDomain) {
     addErrorClass('Make sure your email has domain', 1);
   }
 }
 
 function validatePassword(password) {
-  if ([...password].length < 9) {
+  const isShorterThanEight = [...password].length < 8;
+  const doesNotHaveUppercase = !/[A-Z]/.test(password);
+  const doesNotHaveDigit = !/[0-9]/.test(password);
+  const doesNotHaveSpecial = !/\W/.test(password);
+
+  if (isShorterThanEight) {
     addErrorClass('Make sure your password is at least 8 characters long', 2);
   }
-  if (!/[A-Z]/.test(password)) {
+  if (doesNotHaveUppercase) {
     addErrorClass('Password must contain an uppercase letter', 2);
   }
-  if (!/[0-9]/.test(password)) {
+  if (doesNotHaveDigit) {
     addErrorClass('Password must contain a number', 2);
   }
-  if (!/\W/.test(password)) {
+  if (doesNotHaveSpecial) {
     addErrorClass('Password must contain a non alphanumeric character', 2);
   }
 }
@@ -68,6 +79,7 @@ function submitFormData(e) {
   const passwordInput = document.querySelector('#password');
   const confirmInput = document.querySelector('#confirm');
   const checkbox = document.querySelector('#check');
+
   if (
     validateName(nameInput.value) &&
     validateEmail(emailInput.value) &&
