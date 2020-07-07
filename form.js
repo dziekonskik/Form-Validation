@@ -18,7 +18,7 @@ function removeErrorClass(pararaphList) {
 
 function validateName(name) {
   const hasNameShorterThanTwo = name.length < 2;
-  const doesNotHaveDigitsAndSpecials = /\d|\W/.test(name);
+  const doesNotHaveDigitsAndSpecials = !/(\d|\s|\W)/.test(name);
 
   if (hasNameShorterThanTwo) {
     addErrorClass('Name must be at least 2 characters', 0);
@@ -31,13 +31,13 @@ function validateName(name) {
 }
 
 function validateEmail(email) {
-  const doensNotHaveAt = !email.toString().includes('@');
-  const doesNotHaveDomain = !/\.\w{2,3}$/.test(email);
+  const doesNotHaveAt = email.toString().includes('@');
+  const doesNotHaveDomain = /\.\w{2,3}$/.test(email);
 
-  if (doensNotHaveAt) {
+  if (!doesNotHaveAt) {
     addErrorClass('Make sure your email has "@" character', 1);
   }
-  if (doesNotHaveDomain) {
+  if (!doesNotHaveDomain) {
     addErrorClass('Make sure your email has domain', 1);
   }
 }
@@ -73,24 +73,18 @@ function validateCheckbox(checkbox) {
 }
 
 function submitFormData(e) {
-  //e.preventDefault();
+  e.preventDefault();
   const nameInput = document.querySelector('#name');
   const emailInput = document.querySelector('#email');
   const passwordInput = document.querySelector('#password');
   const confirmInput = document.querySelector('#confirm');
   const checkbox = document.querySelector('#check');
 
-  if (
-    validateName(nameInput.value) &&
-    validateEmail(emailInput.value) &&
-    validatePassword(passwordInput.value) &&
-    confirmPassword(passwordInput.value, confirmInput.value) &&
-    validateCheckbox(checkbox)
-  ) {
-    return true;
-  } else {
-    e.preventDefault();
-  }
+  validateName(nameInput.value);
+  validateEmail(emailInput.value);
+  validatePassword(passwordInput.value);
+  confirmPassword(passwordInput.value, confirmInput.value);
+  validateCheckbox(checkbox);
 }
 
 document.forms[0].addEventListener('submit', submitFormData);
